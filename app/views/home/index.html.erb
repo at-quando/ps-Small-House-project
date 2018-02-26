@@ -1,0 +1,147 @@
+<div class="home">
+  <div class="home-layer">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="picture" style="<%= @links[0] %>" alt="Los Angeles"></div>
+          <div class="carousel-caption">
+            <h3>Los Angeles</h3>
+            <p>We had such a great time in LA!</p>
+            <a class="btn btn-success">Xem thêm</a>
+          </div>   
+        </div>
+        <% @links.each do |link| %>
+          <div class="carousel-item">
+            <div class="picture" style="<%= link %>" alt="Chicago"></div>
+            <div class="carousel-caption">
+              <h3>Chicago</h3>
+              <p>Thank you, Chicago!</p>
+              <a class="btn btn-success">Xem thêm</a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+    <div class="container">
+      <div class="work-list">
+        <% @works.each do |work| %>
+          <% a = "background-image: url(" + work.file.to_s + ")" %>
+          <div class="work-item">
+            <div class="work-img" style="<%= a %>">
+              <div class="work-meta">
+                  <span class="title"><%= work.title %></span><br>
+                  <% if work.student %>
+                    <span class="author"><%= work.student.name %> (<%= work.age %> tuổi)</span>
+                  <% else %>
+                    <span class="author">vô danh</span>
+                  <% end %>
+                </div>
+            </div> 
+          </div>
+        <% end %>
+      </div>
+      <div class="workshop-houseview">
+        <div class="img-box">
+          <img src ="http://www.dole.com/~/media/Mastheads/All%20Fruit%20Final.jpg">
+        </div>
+        <div class="meta">
+          <h3>Ngôi nhà nhỏ của chúng tôi</h3>
+          <span>HOME MADE</span>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+      </div>
+      <div class="student row">
+        <div class="col-sm-8">
+          <div class="student-list">
+            <h3>Học sinh tiêu biểu</h3>
+            <% if @students_list.length > 0 %>
+              <% @students_list.each do |student| %>
+                <div class="student-item">
+                  <%= link_to student_path(student),:method => :get do %>
+                    <div class="student-img-box">
+                      <img class="student-img" src="<%= student.avatar %>">
+                    </div>
+                    <div class="student-meta">
+                      <span class="name"><%= student.name %> </span>
+                      <span class="age"> (<%= student.birthday.year %>)</span>
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                      <p class="student-desc"><%= student.description[0..60] %></p>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="student-large">
+            <% if @student_best %>
+              <%= link_to student_path(@student_best),:method => :get do %>
+                <div class="student-img-box">
+                  <img class="student-img" src="<%= @student_best.avatar %>">
+                </div>
+                <div class="student-meta">
+                  <span class="name"><%= @student_best.name%></span>
+                  <span class="age"><%= @student_best.birthday.year %></span>
+                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  <p class="student-desc"><%= @student_best.description[0..60] %></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="price-course">
+        <h3>Khoá học</h3>
+        <table>
+          <tr>
+            <th>COURSES
+              <p>Weekly Time - Term </p>
+            </th>
+            <th>PRICES</th>
+          </tr>
+          <tr>
+            <td>giá tiền</td>
+            <td>suất học</td>
+          </tr>
+          <tr>
+            <td>giá tiền</td>
+            <td>suất học</td>
+          </tr>
+          <tr>
+            <td>giá tiền</td>
+            <td>suất học</td>
+          </tr>
+        </table>
+      </div>
+      <div class="house-view row">
+        <div class="col-sm-8">
+          <div class="meta-view">
+            <h3>Giới thiệu workshop</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="house-item-box">
+            <% 3.times do %>
+              <div class="house-item" style="background-image:url(http://www.cianellistudios.com/blog/wp-content/uploads/2010/12/abstract-art-painting-canvas-art-mother-earth.jpg)">
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render 'shared/footer' %>
+  </div>
+</div>

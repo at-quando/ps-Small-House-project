@@ -1,0 +1,22 @@
+@import "spina";
+@import "bootstrap"; 
+@import "font-awesome";
+
+.infinite-scroll {
+  &:after {
+    clear: both;
+    content:  " ";
+    display: block;
+  }
+}
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.picture-preview {
+  width: 200px;
+}
+.picture-preview-favor {
+  width: 100px;
+}

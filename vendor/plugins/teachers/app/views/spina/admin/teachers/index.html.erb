@@ -1,0 +1,69 @@
+<div class="filters">
+    <%= link_to 'Tạo giáo viên mới', new_admin_teacher_path, class: 'button button-primary', data: {icon: 't'} %>
+  </div>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Birthday</th>
+          <th>Phone</th>
+          <th>Specialize</th>
+          <th>Salary</th>
+          <th>Start Day</th>
+          <th>End Day</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @teachers.any? %>
+          <% @teachers.each do |teacher| %>
+            <tr>
+              <td>
+                <img class="avatar" src="<%= teacher.avatar %>">
+              </td>
+              <td>
+                <%= teacher.name %>
+              </td>
+              <td>
+                <% if teacher.birthday %>
+                  <%= teacher.birthday.strftime("%d-%m-%Y") %>
+                <% end %>
+              </td>
+              <td>
+                <%= teacher.phone %>
+              </td>
+              <td>
+                <%= teacher.specialize %>
+              </td>
+              <td>
+                <%= teacher.salary %>
+              </td>
+              <td>
+                <% if teacher.start_date %>
+                  <%= teacher.start_date.strftime("%d-%m-%Y") %>
+                <% end %>
+              </td>
+              <td>
+                <% if teacher.end_date %>
+                  <%= teacher.end_date.strftime("%d-%m-%Y") %>
+                <% end %>
+              </td>
+              <td class="nowrap align-right">
+                <%= link_to spina.edit_admin_teacher_path(teacher), class: 'button button-link' do %>
+                  <%= icon('pencil-outline') %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td class="align-center" colspan="3">
+              <em>There are no articles</em>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

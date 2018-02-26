@@ -1,0 +1,20 @@
+@mixin shadow-radius() {
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.28);
+}
+@mixin transition($radius) {
+  -webkit-transition: all $radius ease-in-out;
+  -moz-transition: all $radius ease-in-out;
+  -ms-transition: all $radius ease-in-out;
+  -o-transition: all $radius ease-in-out;
+  transition: all $radius ease-in-out;
+}
+@mixin background-table() {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cbace5+0,e3bdc8+50,d1b9cf+100 */
+  background: #cbace5; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #cbace5 0%, #e3bdc8 50%, #d1b9cf 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #cbace5 0%,#e3bdc8 50%,#d1b9cf 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #cbace5 0%,#e3bdc8 50%,#d1b9cf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cbace5', endColorstr='#d1b9cf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}

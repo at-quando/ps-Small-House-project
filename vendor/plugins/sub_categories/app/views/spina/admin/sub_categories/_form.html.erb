@@ -1,0 +1,41 @@
+<%= form_for [:admin, @sub_category], html: {autocomplete: "off"} do |f| %>
+  <div id="page_content">
+    <div class="table-container">
+      <table class="table table-form">
+        <tr>
+          <td>
+            Chọn thể loại cha
+          </td>
+          <td>
+            <%= f.select( :category_id , options_for_select(@categories.collect{ |u| [u.title, u.id] })) %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Tiêu đề
+          </td>
+          <td>
+            <%= f.text_field :title %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Đường dẫn
+          </td>
+          <td>
+            <%= f.text_field :urlTitle %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <button class="button button-primary" type="submit">
+    Save
+  </button>
+  <%= link_to 'Cancel', admin_sub_categories_path, class: 'button button-link' %>
+  <% unless @sub_category.new_record? %>
+    <div class="pull-right">
+      <%= link_to 'Delete', admin_sub_category_path(@sub_category), method: :delete, confirm: 'Are you sure?', class: 'button button-link button-danger' %>
+    </div>
+  <% end %>
+<% end %>

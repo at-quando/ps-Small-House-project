@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Albums</h2>
+  <% @works.each do |work| %>
+    <div class="album-box">
+      <img src="<%= work.file.to_s %>" class="album-item">
+      <div class="album-meta">
+        <p class="title">Title</p>
+        <p>12/12/2017</p>
+        <p>by Do Quan</p>
+      </div>
+    </div>
+  <% end %>
+  <% @works.each do |work| %>
+    <div class="album-box">
+      <img src="<%= work.file.to_s %>" class="album-item">
+      <div class="album-meta">
+        <p class="title">Title</p>
+        <p>12/12/2017</p>
+        <p>by Do Quan</p>
+      </div>
+    </div>
+  <% end %>
+</div>

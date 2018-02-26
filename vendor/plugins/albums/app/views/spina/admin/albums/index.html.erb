@@ -1,0 +1,39 @@
+<div class="filters">
+  <%= link_to 'New article', '', class: 'button button-primary', data: {icon: 't'} %>
+</div>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @articles.any? %>
+        <% @articles.each do |article| %>
+          <tr>
+            <td>
+              <%= article.title %>
+            </td>
+            <td>
+              <!-- <%= l(article.date) %> -->
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_article_path(article), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="3">
+            <em>There are no articles</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

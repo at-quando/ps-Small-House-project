@@ -1,0 +1,14 @@
+.navbar {
+  height: 10vh;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.28);
+  .nav-item{
+    padding: 0 1rem;
+    text-transform: capitalize;
+    a {
+      color: #5a5656;
+      font-size: 1.2rem;
+    }
+  } 
+}

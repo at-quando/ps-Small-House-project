@@ -1,0 +1,57 @@
+.work-list {
+  padding: 3.5rem 0;
+  overflow: hidden;
+  .work-item {
+    width: calc(100%/6);
+    padding: 0 1rem;
+    float: left;
+    .work-img {
+      @include shadow-radius();
+      padding-bottom: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform .2s;
+      position: relative;
+      &:hover {
+        transform: scale(1.2);
+        .work-meta {
+          @include transition(200ms);
+          opacity: 1;
+        }
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+    .work-img:after {
+      content: '\A';
+      opacity: 0;
+      position: absolute;
+      width: 100%; 
+      height:100%;
+      top:0; 
+      left:0;
+      background:rgba(0,0,0,0.3);
+    }
+    .work-meta {
+      opacity: 0;
+      z-index: 4;
+      position: absolute;
+      padding-left: 1rem;
+      padding-top: 1rem;
+      left: 0;
+      top: 0;
+      color: white;
+      .title {
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+      .author {
+        font-size: 0.8rem;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+}

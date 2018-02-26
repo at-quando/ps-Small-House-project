@@ -1,0 +1,49 @@
+<div class="filters">
+  <%= link_to 'Tạo thể loại con', new_admin_sub_category_path, class: 'button button-primary', data: {icon: 't'} %>
+</div>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tiêu đề</th>
+        <th>Đường dẫn</th>
+        <th>Thể loại cha</th>
+        <th>Đường dẫn cha</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @sub_categories.any? %>
+        <% @sub_categories.each do |sub_category| %>
+          <tr>
+            <td>
+              <%= sub_category.title %>
+            </td>
+            <td>
+              /<%= sub_category.urlTitle %>
+            </td>
+            <td>
+              <%= sub_category.category.title %>
+            </td>
+            <td>
+              /<%= sub_category.category.urlTitle %>
+            </td>
+            <td>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_sub_category_path(sub_category), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="4">
+            <em>There are no sub categories</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

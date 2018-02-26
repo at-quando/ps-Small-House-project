@@ -1,0 +1,48 @@
+html, body {
+  height: 100%;
+} 
+body {
+  font-family: 'Mijas Ultra';
+  color: #a9a7a7;
+  margin-top: 3rem;
+}
+.home {
+  background-image: url("/images/background.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+.home-layer {
+  margin: 0 5rem;
+  padding-bottom: 5rem;
+  background-image: url("/images/background_body.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+ul {
+  padding: 0;
+}
+.container {
+  max-width: 1340px;
+  padding: 3rem 0;
+}
+p {
+  margin: 0;
+  font-family: 'BreeSerif';
+  color: black;
+}
+
+h3 {
+  font-family: 'Pacifico';
+  color: black;
+}
+.navbar-brand, .logo {
+  height: 5rem;
+}
+.navbar {
+  background: white;
+}
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1;
+}

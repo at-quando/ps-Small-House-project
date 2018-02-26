@@ -1,0 +1,92 @@
+<h3>Tạo học sinh</h3>
+<%= form_for [:admin, @teacher], html: {autocomplete: "off"} do |f| %>
+  <div id="page_content">
+    <div class="table-container">
+      <table class="table table-form">
+        <tr>
+          <td>
+            Tên đầy đủ
+          </td>
+          <td>
+            <%= f.text_field :name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Mô tả lý lịch
+          </td>
+          <td>
+            <%= f.text_area :info %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Ngày Sinh
+          </td>
+          <td>
+            <%= f.text_field :birthday, value: (@teacher.birthday.strftime("%d-%m-%Y") unless @teacher.new_record?), class: 'datepicker' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            SĐT
+          </td>
+          <td>
+            <%= f.text_field :phone %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Điểm mạnh
+          </td>
+          <td>
+            <%= f.text_field :specialize %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Phương Pháp Giảng dạy
+          </td>
+          <td>
+            <%= f.text_field :teaching_technic %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Lương
+          </td>
+          <td>
+            <%= f.text_field :salary %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Start day
+          </td>
+          <td>
+            <%= f.text_field :start_date, value: (@teacher.start_date.strftime("%d-%m-%Y") unless @teacher.new_record?), class: 'datepicker' %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Avatar
+          </td>
+          <td>
+              <%= f.file_field :avatar %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <button class="button button-primary" type="submit">
+    Save
+  </button>
+  <%= link_to 'Cancel', admin_teachers_path, class: 'button button-link' %>
+  <% unless @teacher.new_record? %>
+    <div class="pull-right">
+      <%= link_to 'Delete', admin_teacher_path(@teacher), method: :delete, confirm: 'Are you sure?', class: 'button button-link button-danger' %>
+    </div>
+  <% end %>
+<% end %>
+
+

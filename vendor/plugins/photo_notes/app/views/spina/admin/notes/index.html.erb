@@ -1,0 +1,114 @@
+<div class="filters">
+  <button id="uploadPicture1" class="button button button-primary button-small js-trix-photo" data-trix-action="photo" data-trix-attribute="photo" tabindex="-1" title="Photo" type="button">
+    NEW PICTURE <div class="icon icon-picture-o"></div>
+  </button>
+</div>
+<div class="table-container">
+  <h3>Tác phẩm tiêu biểu</h3>
+  <p>Chọn đủ 6 tác phẩm tiêu biểu bằng cách bấm vào nút từ danh sách tổng hợp bên dưới </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Picture</th>
+        <th>Tiêu đề</th>
+        <th>Tác giả</th>
+        <th>Tuổi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @favor_notes.any? %>
+        <% @favor_notes.each do |favor_note| %>
+          <tr>
+            <td>
+              <img src="<%= favor_note.file %>" class="picture-preview-favor">
+            </td>
+            <td>
+              <%= favor_note.title %>
+            </td>
+            <td>
+              <% if favor_note.student %>
+                Học sinh <b><%= favor_note.student.name %></b><br>
+              <% end %>
+              <% if favor_note.teacher %>
+                Giáo viên <b><%= favor_note.teacher.name %></b>
+              <% end %>
+            </td>
+            <td>
+              <%= favor_note.age %>
+            </td>
+            <td>
+              <%= favor_note.description %>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.admin_delete_favorite_photo_path(favor_note),:method => :delete, class: 'btn btn-danger' do %>
+                <%= icon('cross') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="4">
+            <em>There are no sub categories</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h3>Danh sách tất cả tác phẩm</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Picture</th>
+        <th>Tiêu đề</th>
+        <th>Tác giả</th>
+        <th>Tuổi</th>
+        <th>Miêu tả</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @notes.any? %>
+        <% @notes.each do |note| %>
+          <tr>
+            <td>
+              <img src="<%= note.file %>" class="picture-preview">
+            </td>
+            <td>
+              <%= note.title %>
+            </td>
+            <td>
+              <% if note.student %>
+                Học sinh <b><%= note.student.name %></b><br>
+              <% end %>
+              <% if note.teacher %>
+                Giáo viên <b><%= note.teacher.name %></b>
+              <% end %>
+            </td>
+            <td>
+              <%= note.age %>
+            </td>
+            <td>
+              <%= note.description %>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_note_path(note), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+              <% if note.favorite != true %>
+                <%= link_to spina.admin_favorite_photo_path(note),:method => :patch, class: 'btn btn-primary' do %>
+                  <%= icon('check') %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="4">
+            <em>There are no sub categories</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

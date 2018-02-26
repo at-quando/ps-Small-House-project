@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Danh sách học sinh</h2>
+  <% @students.each do |work| %>
+    <div class="album-box">
+      <%= link_to student_path(work),:method => :get do %>
+        <img src="<%= work.avatar.to_s %>" class="album-item">
+        <div class="album-meta">
+          <p class="title">Quan Do</p>
+          <p>1995</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

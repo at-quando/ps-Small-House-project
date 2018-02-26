@@ -1,0 +1,39 @@
+<div class="filters">
+  <%= link_to 'New categories', new_admin_category_path, class: 'button button-primary', data: {icon: 't'} %>
+</div>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tiêu đề</th>
+        <th>Đường dẫn</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @categories.any? %>
+        <% @categories.each do |category| %>
+          <tr>
+            <td>
+              <%= category.title %>
+            </td>
+            <td>
+              <%= category.urlTitle %>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_category_path(category), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="3">
+            <em>There are no categories</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

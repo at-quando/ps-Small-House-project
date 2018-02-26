@@ -1,0 +1,28 @@
+<nav class="navbar navbar-fixed-top fixed-top navbar-expand-sm navbar-custom" role='navigation'>
+  <a href="/" class="navbar-brand"><img class="logo" src="/images/logo.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+    <i class="fa fa-list-ul" aria-hidden="true"></i>
+  </button>
+  <div class="d-flex justify-content-center navbar-collapse collapse" id="navbarCustom">
+    <ul class="navbar-nav">
+      <% zone.each do |e| %>
+        <% if e[1].length > 0 %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= e[0].title %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% e[1].each do |x| %>
+                <%=link_to x.title, x.urlTitle, class: "dropdown-item" %>
+              <% end %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%=link_to e[0].title, e[0].urlTitle, class: "nav-link" %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</nav>

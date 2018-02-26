@@ -1,0 +1,49 @@
+<div class="student-details container">
+  <div class="row">
+    <div class="col-md-4 p-info text-center">
+      <h3>Thông tin cá nhân</h3>
+      <div class="student-img-box">
+        <img class="student-img" src="<%= @student.avatar %>">
+      </div>
+      <div class="student-meta">
+        <div>
+          <label>Họ và tên:</label><span class="name"> <%= @student.name %> </span>
+        </div>
+        <div>
+          <label>Ngày sinh:</label><span class="age">  <%= @student.birthday.strftime("%d-%m-%Y") %></span>
+        </div>
+        <div>
+            <label>Sơ yếu lý lịch:</label><br><span class="student-desc"> <%= @student.description %></span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="works">
+        <h3>Tác phẩm</h3>
+        <% @student.photos.each do |work| %>
+          <div class="album-box">
+            <%= link_to student_path(work),:method => :get do %>
+              <img src="<%= work.file.to_s %>" class="album-item">
+              <div class="album-meta">
+                <p class="title">Quan Do</p>
+                <p>1995</p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <div class="reviews">
+        <h3>Nhận xét từ giáo viên</h3>
+        <p class="reviews-paragraph">
+          Ở nhiều nước trên thế giới, chuyện học sinh, sinh viên có quyền đánh giá tư cách, năng lực giảng dạy, quản lí giáo dục của giáo viên là việc làm hết sức bình thường.
+        Còn ở ta vài năm trước, có nhiều trường phổ thông, Cao đẳng, Đại học cũng đã tiến hành tổ chức lấy ý kiến của học sinh, sinh viên bằng hình thức phiếu trắc nghiệm về công tác giảng dạy, quản lí của giáo viên.
+        </p>
+        <p class="reviews-paragraph">
+          Ở nhiều nước trên thế giới, chuyện học sinh, sinh viên có quyền đánh giá tư cách, năng lực giảng dạy, quản lí giáo dục của giáo viên là việc làm hết sức bình thường.
+          Còn ở ta vài năm trước, có nhiều trường phổ thông, Cao đẳng, Đại học cũng đã tiến hành tổ chức lấy ý kiến của học sinh, sinh viên bằng hình thức phiếu trắc nghiệm về công tác giảng dạy, quản lí của giáo viên.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

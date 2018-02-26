@@ -1,0 +1,57 @@
+<%= form_for [:admin, @note], url: admin_note_path, html: {autocomplete: "off"} do |f| %>
+  <div id="page_content">
+    <div class="table-container">
+      <table class="table table-form">
+        <tr>
+          <td>
+            Title
+          </td>
+          <td>
+            <%= f.text_field :title %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Description
+          </td>
+          <td>
+            <%= f.text_field :description %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Age
+          </td>
+          <td>
+            <%= f.select :age, (1..80) %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Student
+          </td>
+          <td>
+            <%= f.select :student_id, options_for_select(@students, :selected => @note.student_id) %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Teacher
+          </td>
+          <td>
+              <%= f.select :teacher_id, options_for_select(@teachers, :selected => @note.teacher_id)  %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <button class="button button-primary" type="submit">
+    Save
+  </button>
+  <%= link_to 'Cancel', admin_notes_path, class: 'button button-link' %>
+  <% unless @note.new_record? %>
+    <div class="pull-right">
+      <%= link_to 'Delete', admin_photo_path(@note), method: :delete, confirm: 'Are you sure?', class: 'button button-link button-danger' %>
+    </div>
+  <% end %>
+<% end %>

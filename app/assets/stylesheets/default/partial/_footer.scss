@@ -1,0 +1,23 @@
+.footer {
+  padding: 3rem 0;
+  text-align: center;
+  vertical-align: middle;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6f5062+0,4e4b60+42,31475e+99 */
+  background: rgb(111,80,98); /* Old browsers */
+  background: -moz-linear-gradient(top, rgb(111,80,98) 0%, rgb(78,75,96) 42%, rgb(49,71,94) 99%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgb(111,80,98) 0%,rgb(78,75,96) 42%,rgb(49,71,94) 99%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgb(111,80,98) 0%,rgb(78,75,96) 42%,rgb(49,71,94) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6f5062', endColorstr='#31475e',GradientType=0 ); /* IE6-9 */
+  label {
+    width: 5rem;
+  }
+  .fa {
+    width: 1.4rem;
+  }
+}
+.col-footer {
+  display: inline-block;
+  vertical-align: top;
+  padding: 2rem 4rem;
+  text-align: left;
+}

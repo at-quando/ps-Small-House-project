@@ -1,0 +1,100 @@
+<%= form_for [:admin, @article], html: {autocomplete: "off"} do |f| %>
+  <div id="page_content">
+    <div class="table-container">
+      <table class="table table-form">
+        <tr>
+          <td>
+            Tiêu đề
+          </td>
+          <td>
+            <%= f.text_field :title %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Loại bài
+          </td>
+          <td>
+            <%= f.text_field :title %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Miêu tả sơ bộ
+          </td>
+          <td>
+            <%= f.text_area :description %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Nội dung cụ thể
+          </td>
+          <td>
+            <div class="horizontal-form-content">
+              <%= f.text_field :content %>
+              <trix-toolbar class="clearfix" data-trix-editor-id="100_content_editor" id="100_content_toolbar">
+                <div class="button-groups">
+                  <div class="button-group pull-left">
+                    <button class="button button-small" data-trix-attribute="bold" data-trix-key="b" tabindex="-1" title="Bold" type="button">
+                      <div class="icon icon-bold"></div>
+                    </button>
+                    <button class="button button-small" data-trix-attribute="italic" data-trix-key="i" tabindex="-1" title="Italic" type="button">
+                      <div class="icon icon-italic"></div>
+                    </button>
+                    <button class="button button-small" data-trix-attribute="bullet" tabindex="-1" title="Bullets" type="button">
+                      <div class="icon icon-list-ul"></div>
+                    </button>
+                    <button class="button button-small" data-trix-action="link" data-trix-attribute="href" data-trix-key="k" tabindex="-1" title="Link" type="button">
+                      <div class="icon icon-link"></div>
+                    </button>
+                    <button id="uploadPicture" class="button button-small js-trix-photo" data-trix-action="photo" data-trix-attribute="photo" tabindex="-1" title="Photo" type="button">
+                      <div class="icon icon-picture-o"></div>
+                    </button>
+                  </div>
+                  <div class="button-group pull-left">
+                    <button class="button button-small" data-trix-attribute="heading1" tabindex="-1" title="h1" type="button">H1</button>
+                    <button class="button button-small" data-trix-attribute="heading2" tabindex="-1" title="h1" type="button">H2</button>
+                    <button class="button button-small" data-trix-attribute="heading3" tabindex="-1" title="h2" type="button">H3</button>
+                    <button class="button button-small" data-trix-attribute="heading4" tabindex="-1" title="h3" type="button">H4</button>
+                    <button class="button button-small" data-trix-attribute="heading5" tabindex="-1" title="h4" type="button">H5</button>
+                    <button class="button button-small" data-trix-attribute="heading6" tabindex="-1" title="h5" type="button">H6</button>
+                  </div>
+                </div>
+                <div class="dialogs">
+                  <div class="dialog link_dialog" data-trix-attribute="href" data-trix-dialog="href">
+                    <div class="link_url_fields">
+                      <input name="href" placeholder="Enter a URL…" required="" type="text" disabled="disabled">
+                      <div class="button-group">
+                        <input class="button" data-trix-method="setAttribute" tabindex="-1" type="button" value="Link">
+                        <input class="button" data-trix-method="removeAttribute" tabindex="-1" type="button" value="Unlink">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </trix-toolbar>
+              <trix-editor class="text-input" id="100_content_editor" input="article_content" toolbar="100_content_toolbar" contenteditable=""></trix-editor>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Ngày tạo
+          </td>
+          <td>
+            <%= f.text_field :date, value: (@article.date.strftime("%d-%m-%Y") unless @article.new_record?), class: 'datepicker' %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <button class="button button-primary" type="submit">
+    Save
+  </button>
+  <%= link_to 'Cancel', admin_articles_path, class: 'button button-link' %>
+  <% unless @article.new_record? %>
+    <div class="pull-right">
+      <%= link_to 'Delete', admin_article_path(@article), method: :delete, confirm: 'Are you sure?', class: 'button button-link button-danger' %>
+    </div>
+  <% end %>
+<% end %>
