@@ -56,32 +56,33 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 plugin :tmp_restart
 
 # Change to match your CPU core count
-workers 1
 
-#Open from this to deploy
-# Min and Max threads per worker
-threads 1, 6
+# #Open from this to deploy
+# workers 1
 
-app_dir = File.expand_path("../..", __FILE__)
-shared_dir = "#{app_dir}/shared"
+# # Min and Max threads per worker
+# threads 1, 6
 
-# Default to production
-rails_env = "production"
-environment rails_env
+# app_dir = File.expand_path("../..", __FILE__)
+# shared_dir = "#{app_dir}/shared"
 
-# Set up socket location
-bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
+# # Default to production
+# rails_env = "production"
+# environment rails_env
 
-# Logging
-stdout_redirect "#{shared_dir}/tmp/log/puma.stdout.log", "#{shared_dir}/tmp/log/puma.stderr.log", true
+# # Set up socket location
+# bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
 
-# Set master PID and state locations
-pidfile "#{shared_dir}/tmp/pids/puma.pid"
-state_path "#{shared_dir}/tmp/pids/puma.state"
-activate_control_app
+# # Logging
+# stdout_redirect "#{shared_dir}/tmp/log/puma.stdout.log", "#{shared_dir}/tmp/log/puma.stderr.log", true
 
-on_worker_boot do
-  require "active_record"
-  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-  ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
-end
+# # Set master PID and state locations
+# pidfile "#{shared_dir}/tmp/pids/puma.pid"
+# state_path "#{shared_dir}/tmp/pids/puma.state"
+# activate_control_app
+
+# on_worker_boot do
+#   require "active_record"
+#   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+#   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
+# end
