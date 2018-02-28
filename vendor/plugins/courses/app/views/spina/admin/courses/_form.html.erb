@@ -1,0 +1,89 @@
+<%= form_for [:admin, @course], html: {autocomplete: "off"} do |f| %>
+  <div id="page_content">
+    <div class="table-container">
+      <table class="table table-form">
+        <tr>
+          <td>
+            Cấp độ
+          </td>
+          <td>
+            <%= f.text_field :level %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Tên khoá học
+          </td>
+          <td>
+            <%= f.text_field :name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Mã code lớp
+          </td>
+          <td>
+            <%= f.text_field :code %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Thời gian học tối thiểu (tháng)
+          </td>
+          <td>
+            <%= f.text_field :duration_min %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Thời gian học tối đa (tháng)
+          </td>
+          <td>
+              <%= f.text_field :duration_max %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Số buổi (của khoá)
+          </td>
+          <td>
+              <%= f.text_field :learning_days %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Giờ/ buổi (h)
+          </td>
+          <td>
+              <%= f.text_field :learning_hours %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Học phí (VND)
+          </td>
+          <td>
+              <%= f.text_field :course_fee %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Ghi chú
+          </td>
+          <td>
+              <%= f.text_field :note %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <button class="button button-primary" type="submit">
+    Save
+  </button>
+  <%= link_to 'Cancel', admin_courses_path, class: 'button button-link' %>
+  <% unless @course.new_record? %>
+    <div class="pull-right">
+      <%= link_to 'Delete', admin_course_path(@course), method: :delete, confirm: 'Are you sure?', class: 'button button-link button-danger' %>
+    </div>
+  <% end %>
+<% end %>

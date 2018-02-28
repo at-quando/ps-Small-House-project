@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :albums
   resources :students
   resources :teachers
-  
   get "/" => redirect("/home")
+  get "/tac-pham" => 'albums#index'
+  get "/giang-vien" => 'teachers#index'
+  get '/:name' => 'links#about_house', :as => 'single_article', :constraints => { :name => /(?!.*?admin).*/ }
   mount Spina::Engine => '/'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+

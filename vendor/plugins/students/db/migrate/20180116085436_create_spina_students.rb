@@ -14,5 +14,6 @@ class CreateSpinaStudents < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_reference :spina_students, :course
   end
 end

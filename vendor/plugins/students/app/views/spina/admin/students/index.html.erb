@@ -78,6 +78,7 @@
       <tr>
         <th></th>
         <th>Name</th>
+        <th>Course</th>
         <th>Birthday</th>
         <th>Phone</th>
         <th>Home</th>
@@ -96,6 +97,11 @@
             </td>
             <td>
               <%= student.name %>
+            </td>
+            <td>
+              <% if student.course %>
+                <%= student.course.code %>
+              <% end %>
             </td>
             <td>
               <% if student.birthday %>

@@ -13,9 +13,11 @@ module Spina
 
       def new
         @student = Student.new
+        @courses = Course.all.try(:map) {|x| [x.name + ' (' +x.code + ')', x.id]}.unshift(['không có', nil])
       end
 
       def edit
+        @courses = Course.all.try(:map) {|x| [x.name + ' (' +x.code + ')', x.id]}.unshift(['không có', nil])
       end
 
       def create
@@ -59,7 +61,7 @@ module Spina
 
       private
       def student_params
-        params.require(:student).permit(:name, :description, :start_date, :birthday, :phone, :home, :parent, :end_date, :avatar)
+        params.require(:student).permit(:name, :course_id, :description, :start_date, :birthday, :phone, :home, :parent, :end_date, :avatar)
       end
 
       def set_student

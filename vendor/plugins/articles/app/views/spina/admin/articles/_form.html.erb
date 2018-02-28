@@ -12,10 +12,18 @@
         </tr>
         <tr>
           <td>
+            Hình ảnh đại diện
+          </td>
+          <td>
+            <%= f.file_field :cover %>
+          </td>
+        </tr>
+        <tr>
+          <td>
             Loại bài
           </td>
           <td>
-            <%= f.text_field :title %>
+            <%= f.select :sub_category_id, options_for_select(@sub_categories, :selected => @article.sub_category_id) %>
           </td>
         </tr>
         <tr>

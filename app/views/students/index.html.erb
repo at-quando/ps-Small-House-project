@@ -1,14 +1,16 @@
-<div class="container">
+<div class="container custom">
   <h2>Danh sách học sinh</h2>
-  <% @students.each do |work| %>
-    <div class="album-box">
-      <%= link_to student_path(work),:method => :get do %>
-        <img src="<%= work.avatar.to_s %>" class="album-item">
-        <div class="album-meta">
-          <p class="title">Quan Do</p>
-          <p>1995</p>
+  <div class="row">
+    <% @students.each do |work| %>
+      <div class="col-md-3 person">
+        <div class="person-img-box">
+          <img src="<%= work.avatar.to_s %>" class="person-img">
         </div>
-      <% end %>
-    </div>
-  <% end %>
+        <p class="name"><%=work.name%></p>
+        <p class="name"><%=work.birthday.year%></p>
+        <p class="desc-main"><%=work.description[0..120]%></p>
+      </div>
+    <% end %>
+  </div>
 </div>
+  

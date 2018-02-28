@@ -1,0 +1,92 @@
+<h4>Chi tiết về khoá học <%= @course.name %> (<%= @course.code %>)</h4>
+<div>
+  <label>Code</label><span><%= @course.code %></span>
+</div>
+<div>
+  <label>Tên</label><span> <%= @course.name %></span>
+</div>
+<div>
+  <label>Cấp độ</label><span><%= @course.level %></span>
+</div>
+<div>
+  <label>Thời gian học</label><span><%= @course.duration_min %> - <%= @course.duration_max %></span>
+</div>
+<div>
+  <label>Tổng số buổi - (giờ/buổi)</label><span><%= @course.learning_days %> -(<%= @course.learning_hours %> giờ/buổi)</span>
+</div>
+<div>
+  <label>Học phí (VND)</label><span><%= @course.course_fee %></span>
+</div>
+<div>
+  <label>Ghi chú</label><span><%= @course.note %></span>
+</div>
+<h4>Danh sách học sinh đang tham gia khoá học <%= @course.name %> (<%= @course.code %>)</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Birthday</th>
+      <th>Phone</th>
+      <th>Home</th>
+      <th>Parent</th>
+      <th>Start Day</th>
+      <th>End Day</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @students.any? %>
+      <% @students.each do |student| %>
+        <tr>
+          <td>
+            <img class="avatar" src="<%= student.avatar %>">
+          </td>
+          <td>
+            <%= student.name %>
+          </td>
+          <td>
+            <% if student.birthday %>
+              <%= student.birthday.strftime("%d-%m-%Y") %>
+            <% end %>
+          </td>
+          <td>
+            <%= student.phone %>
+          </td>
+          <td>
+            <%= student.home %>
+          </td>
+          <td>
+            <%= student.parent %>
+          </td>
+          <td>
+            <% if student.start_date %>
+              <%= student.start_date.strftime("%d-%m-%Y") %>
+            <% end %>
+          </td>
+          <td>
+            <% if student.end_date %>
+              <%= student.end_date.strftime("%d-%m-%Y") %>
+            <% end %>
+          </td>
+          <td class="nowrap align-right">
+            <%= link_to spina.edit_admin_student_path(student), class: 'button button-link' do %>
+              <%= icon('pencil-outline') %>
+            <% end %>
+            <% if student.favorite != true %>
+              <%= link_to spina.admin_favorite_student_path(student),:method => :patch, class: 'btn btn-primary' do %>
+                <%= icon('check') %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td class="align-center" colspan="3">
+          <em>There are no students</em>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

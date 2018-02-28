@@ -1,0 +1,62 @@
+<div class="filters">
+  <%= link_to 'New courses', new_admin_course_path, class: 'button button-primary', data: {icon: 't'} %>
+</div>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Tên</th>
+        <th>Cấp độ</th>
+        <th>Thời gian học</th>
+        <th>Tổng số buổi - (giờ/buổi)</th>
+        <th>Học phí (VND)</th>
+        <th>Ghi chú</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @courses.any? %>
+        <% @courses.each do |course| %>
+          <tr>
+            <td>
+              <%= course.code %>
+            </td>
+            <td>
+              <%= course.name %>
+            </td>
+            <td>
+              <%= course.level %>
+            </td>
+            <td>
+              <%= course.duration_min %> - <%= course.duration_max %>
+            </td>
+            <td>
+              <%= course.learning_days %> -(<%= course.learning_hours %> giờ/buổi)
+            </td>
+            <td>
+              <%= course.course_fee %>
+            </td>
+            <td>
+              <%= course.note %>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_course_path(course), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+              <%= link_to spina. admin_course_path(course), class: 'button button-link' do %>
+                <%= icon('list-ul') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="7">
+            <em>There are no courses</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

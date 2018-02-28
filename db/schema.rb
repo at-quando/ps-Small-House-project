@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130101346) do
+ActiveRecord::Schema.define(version: 20180228150611) do
 
   create_table "spina_accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -30,12 +30,15 @@ ActiveRecord::Schema.define(version: 20180130101346) do
 
   create_table "spina_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
+    t.string "cover"
     t.text "description"
     t.text "content"
     t.datetime "date"
+    t.integer "favorite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "photo_id"
+    t.bigint "sub_category_id"
+    t.index ["sub_category_id"], name: "index_spina_articles_on_sub_category_id"
   end
 
   create_table "spina_attachment_collections", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -67,6 +70,20 @@ ActiveRecord::Schema.define(version: 20180130101346) do
   create_table "spina_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "urlTitle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spina_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "level"
+    t.string "code"
+    t.string "name"
+    t.float "duration_min", limit: 24
+    t.float "duration_max", limit: 24
+    t.integer "learning_days"
+    t.float "learning_hours", limit: 24
+    t.float "course_fee", limit: 24
+    t.string "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -233,6 +250,8 @@ ActiveRecord::Schema.define(version: 20180130101346) do
     t.boolean "favorite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_spina_students_on_course_id"
   end
 
   create_table "spina_sub_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

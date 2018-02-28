@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <% if @article %>
+      <div class="col-md-7">
+        <h2><%=@article.title%></h2>
+        <% if @article.date %>
+          <div><i class="fa fa-calendar"></i><span><%=@article.date.strftime("%d-%m-%Y")%></span></div>
+        <% end %>
+        <div class="fb-like" data-href="<%=request.original_url%>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+        <hr>
+        <%=@article.description%>
+        <div id="content" style=" width: 100%">
+        </div>
+        <hr>
+        <div class="fb-pack">
+          <div class="fb-like" data-href="<%=request.original_url%>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+          <div class="fb-comments" data-href="<%=request.original_url%>" data-numposts="10"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <h5>Các bài viết mới</h5>
+        <hr style="border-top-color: orange">
+        <div class="related-articles">
+          <ul>
+            <% @related_articles.each do |art| %>
+              <li class="row article-item">
+                <div class="col-md-3">
+                  <div class="article-img-box">
+                    <img src="<%= art.cover %>" class="article-img">
+                  </div>
+                </div>
+                <div class="article-meta col-md-9">
+                  <p><%= art.title %></p>
+                  <% if art.date %>
+                    <i class="fa fa-calendar"></i><span><%= art.date.strftime("%d-%m-%Y") %></span>
+                  <% end %>
+                  <br>
+                  <span><%= art.description[0..180] %></span>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <div class="col-md-9">
+        <h2>Tin tức <%=@list.title%></h2>
+        <div class="row">
+          <% @articles.each do |art| %>
+            <div class="col-md-4 art-item">
+              <div class="item-box">
+                <img src="<%= art.cover %>" class="article-item-img">
+              </div>
+              <h5><%= art.title %></h5>
+              <% if art.date %>
+                <div><i class="fa fa-calendar"></i><span><%=art.date.strftime("%d-%m-%Y")%></span></div>
+              <% end %>
+              <p class="desc-main"><%= art.description[0..120] %></p>
+              <%=link_to 'Xem thêm', '' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="fb-page" data-href="https://www.facebook.com/lopvengoinhanho/" data-height="1000" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/lopvengoinhanho/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/lopvengoinhanho/">Lớp vẽ Ngôi Nhà Nhỏ</a></blockquote></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    try {
+      <% if @article %>
+        var xmlString = <%= @article.content.to_json.to_s.html_safe %> || '';
+        var div = document.getElementById('content');
+        $('#content').html(xmlString);
+      <% end %>
+    } catch(err) {
+
+    }
+  });
+</script>

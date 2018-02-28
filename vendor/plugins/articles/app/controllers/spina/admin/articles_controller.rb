@@ -13,6 +13,7 @@ module Spina
 
       def new
         @article = Article.new
+        @sub_categories = SubCategory.all.try(:map) {|x| [x.title, x.id]}.unshift(['không có', nil])
       end
 
       def edit
@@ -45,7 +46,7 @@ module Spina
       private
 
       def article_params
-        params.require(:article).permit(:title, :description, :content, :date)
+        params.require(:article).permit(:title, :description, :cover, :sub_category_id, :content, :date)
       end
 
       def set_breadcrumb

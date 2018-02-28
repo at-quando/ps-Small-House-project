@@ -31,6 +31,7 @@ gem 'students', path: 'vendor/plugins'
 gem 'teachers', path: 'vendor/plugins'
 gem 'categories', path: 'vendor/plugins'
 gem 'sub_categories', path: 'vendor/plugins'
+gem 'courses', path: 'vendor/plugins'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

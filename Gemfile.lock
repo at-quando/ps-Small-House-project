@@ -9,6 +9,9 @@ PATH
     categories (0.1.0)
       rails (~> 5.1.4)
       spina
+    courses (0.1.0)
+      rails (~> 5.1.4)
+      spina
     photo_notes (0.1.0)
       rails (~> 5.1.4)
       spina
@@ -325,6 +328,7 @@ DEPENDENCIES
   carrierwave
   categories!
   coffee-rails (~> 4.2)
+  courses!
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails

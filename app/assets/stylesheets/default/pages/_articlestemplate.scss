@@ -1,0 +1,59 @@
+.related-articles {
+  .article-item {
+    height: 8rem;
+    margin-bottom: 2rem;
+    .article-img-box {
+      overflow: hidden;
+      border-radius: 5px;
+      height: 100%;
+      .article-img {
+        height: 100%;
+      }
+      .article-meta {
+        
+      }
+    }
+  }
+}
+.fa-calendar {
+  padding-right: 10px;
+}
+#content {
+  img {
+    width: 100%;
+    height: auto;
+    padding: 1rem 4rem;
+  }
+}
+.fb-pack {
+  .fb-comments, .fb-like {
+    width: 100%;
+    padding: 0 4rem;
+  }
+}
+.item-box {
+  height: 200px;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  line-height: 200px;
+  white-space: nowrap;
+  .article-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &:hover::after {
+    content: "Chi tiết";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+.art-item {
+  padding: 1rem 0.5rem;
+}

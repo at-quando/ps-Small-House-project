@@ -64,8 +64,18 @@
             Ảnh đại diện
           </td>
           <td>
-              <%= f.file_field :avatar %>
+            <%= f.file_field :avatar %>
           </td>
+        </tr>
+        <tr>
+          <td>
+            Ghi danh vào khoá
+          </td>
+          <% if @courses != nil %>
+            <td>
+              <%= f.select :course_id, options_for_select(@courses, :selected => @student.course_id) %>
+            </td>
+          <% end %>
         </tr>
       </table>
     </div>

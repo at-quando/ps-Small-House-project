@@ -4,6 +4,7 @@ table {
   @include shadow-radius();
   height: 200px;
   border: 0;
+  color: black;
   th, td {
     padding: 2rem 4rem;
     border: 0.5px solid rgba(255,255,255,0.5);
@@ -11,10 +12,8 @@ table {
   }
   th {
     letter-spacing: 5px;
-    color: black;
     p {
       letter-spacing: 0;
-      color: black;
       font-size: 0.6rem;
     }
   }
