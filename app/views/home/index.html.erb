@@ -53,7 +53,9 @@
       </div>
       <div class="workshop-houseview">
         <div class="img-box">
+          <% if @article %>
             <img src ="<%=@article.cover%>" class="img-article-large">
+          <% end %>
         </div>
         <div class="meta">
           <h3><%=@article.title%></h3>
