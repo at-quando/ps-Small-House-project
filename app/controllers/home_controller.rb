@@ -18,6 +18,11 @@ class HomeController < ApplicationController
     end
     @article = Spina::Article.find_by(favorite: 1)
     @article2 = Spina::Article.find_by(favorite: 2)
-    @images = Spina::SubCategory.find_by(title: 'workshop').articles.order(created_at: :desc)
+    workshop = Spina::SubCategory.find_by(title: 'workshop')
+    if workshop
+      @images = workshop.articles.order(created_at: :desc)
+    else 
+      @images = nil
+    end
   end
 end

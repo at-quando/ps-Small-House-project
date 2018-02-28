@@ -136,9 +136,11 @@
         </div>
         <div class="col-sm-4">
           <div class="house-item-box">
-            <% @images.each do |image| %>
-              <div class="house-item" style="background-image:url(<%= image.cover%>)">
-              </div>
+            <% if @images %>
+              <% @images.each do |image| %>
+                <div class="house-item" style="background-image:url(<%= image.cover%>)">
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>
