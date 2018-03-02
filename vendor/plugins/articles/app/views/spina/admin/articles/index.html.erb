@@ -1,12 +1,107 @@
 <div class="filters">
-  <%= link_to 'New article', new_admin_article_path, class: 'button button-primary', data: {icon: 't'} %>
+  <%= link_to 'Tạo bài viết', new_admin_article_path, class: 'button button-primary', data: {icon: 't'} %>
 </div>
 <div class="table-container">
+  <h3> <%= icon('home') %> Đặt bài viết lên Slider</h3>
   <table class="table">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Date</th>
+        <th>id</th>
+        <th>Tiêu đề</th>
+        <th>Ngày viết</th>
+        <th>Danh mục</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @articlesSlide.any? %>
+        <% @articlesSlide.each do |article| %>
+          <tr>
+            <td>
+              <%= article.id %>
+            </td>
+            <td>
+              <%= article.title %>
+            </td>
+            <td>
+              <%= article.date.strftime("%d-%m-%Y") %>
+            </td>
+            <td>
+              <%= article.sub_category.title %>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_article_path(article), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+              <%= link_to spina.edit_admin_article_path(article), class: 'button button-link' do %>
+                <%= icon('megaphone') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="3">
+            <em>There are no articles</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h3><%= icon('megaphone') %> Đặt bài viết vào mục Workshop</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Tiêu đề</th>
+        <th>Ngày viết</th>
+        <th>Danh mục</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @articlesWorkshop.any? %>
+        <% @articlesWorkshop.each do |article| %>
+          <tr>
+            <td>
+              <%= article.id %>
+            </td>
+            <td>
+              <%= article.title %>
+            </td>
+            <td>
+              <%= article.date.strftime("%d-%m-%Y") %>
+            </td>
+            <td>
+              <%= article.sub_category.title %>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_article_path(article), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+              <%= link_to spina.edit_admin_article_path(article), class: 'button button-link' do %>
+                <%= icon('home') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="3">
+            <em>There are no articles</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h3>Tất cả các bài viết</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Tiêu đề</th>
+        <th>Ngày viết</th>
+        <th>Danh mục</th>
         <th></th>
       </tr>
     </thead>
@@ -15,14 +110,26 @@
         <% @articles.each do |article| %>
           <tr>
             <td>
+              <%= article.id %>
+            </td>
+            <td>
               <%= article.title %>
             </td>
             <td>
-              <%= l(article.date) %>
+              <%= article.date.strftime("%d-%m-%Y") %>
+            </td>
+            <td>
+              <%= article.sub_category.title %>
             </td>
             <td class="nowrap align-right">
               <%= link_to spina.edit_admin_article_path(article), class: 'button button-link' do %>
                 <%= icon('pencil-outline') %>
+              <% end %>
+              <%= link_to spina.admin_favorite_article_slider_path(article), :method => :patch, class: 'button button-link' do %>
+                <%= icon('home') %>
+              <% end %>
+              <%= link_to spina.admin_favorite_article_workshop_path(article), :method => :patch, class: 'button button-link' do %>
+                <%= icon('megaphone') %>
               <% end %>
             </td>
           </tr>

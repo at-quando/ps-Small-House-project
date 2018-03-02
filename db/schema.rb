@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228150612) do
+ActiveRecord::Schema.define(version: 20180302171702) do
 
   create_table "spina_accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -34,11 +34,10 @@ ActiveRecord::Schema.define(version: 20180228150612) do
     t.text "description"
     t.text "content"
     t.datetime "date"
-    t.integer "favorite"
+    t.integer "favorite", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sub_category_id"
-    t.integer "photo_id"
     t.index ["sub_category_id"], name: "index_spina_articles_on_sub_category_id"
   end
 
@@ -85,6 +84,8 @@ ActiveRecord::Schema.define(version: 20180228150612) do
     t.float "learning_hours", limit: 24
     t.float "course_fee", limit: 24
     t.string "note"
+    t.boolean "favorite"
+    t.string "calendar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -249,6 +250,7 @@ ActiveRecord::Schema.define(version: 20180228150612) do
     t.datetime "end_date"
     t.string "avatar"
     t.boolean "favorite"
+    t.integer "dept"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_id"

@@ -1,8 +1,6 @@
 PATH
   remote: vendor/plugins
   specs:
-    albums (0.1.0)
-      rails (~> 5.1.4)
     articles (0.1.0)
       rails (~> 5.1.4)
       spina
@@ -315,7 +313,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  albums!
   articles!
   bootstrap (~> 4.0.0.beta3)
   byebug

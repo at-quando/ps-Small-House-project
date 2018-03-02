@@ -13,7 +13,7 @@
         </tr>
         <tr>
           <td>
-            Ngày sinh
+            Ngày sinh (Ngày - Tháng - Năm)
           </td>
           <td>
             <%= f.text_field :birthday, value: (@student.birthday.strftime("%d-%m-%Y") unless @student.new_record?), class: 'datepicker' %>
@@ -53,7 +53,7 @@
         </tr>
         <tr>
           <td>
-            Ngày bắt đầu học
+            Ngày bắt đầu học (Ngày - Tháng - Năm)
           </td>
           <td>
             <%= f.text_field :start_date, value: (@student.start_date.strftime("%d-%m-%Y") unless @student.new_record?), class: 'datepicker' %>

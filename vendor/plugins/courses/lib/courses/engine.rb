@@ -4,7 +4,7 @@ module Courses
   class Engine < ::Rails::Engine
     initializer 'spina.plugin.register.courses', before: :load_config_initializers do
       ::Spina::Plugin.register do |plugin|
-        plugin.name       = 'Courses'
+        plugin.name       = 'Khoá học'
         plugin.namespace  = 'courses'
       end
     end

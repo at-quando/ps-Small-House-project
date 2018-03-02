@@ -3,12 +3,14 @@ module Spina
     class ArticlesController < AdminController
 
       before_action :set_breadcrumb
-      before_action :set_article, only: [:edit, :update, :destroy]
+      before_action :set_article, only: [:edit, :update, :destroy, :favorite_article_workshop, :favorite_article_slider, :delete_favorite_article]
 
       layout 'spina/admin/admin'
 
       def index
-        @articles = Article.all
+        @articles = Article.where("favorite NOT IN (?)", [2,3])
+        @articlesSlide = Article.where(favorite: 3)
+        @articlesWorkshop = Article.where(favorite: 2)
       end
 
       def new
@@ -17,6 +19,7 @@ module Spina
       end
 
       def edit
+        @sub_categories = SubCategory.all.try(:map) {|x| [x.title, x.id]}.unshift(['không có', nil])
       end
 
       def create
@@ -26,6 +29,26 @@ module Spina
           redirect_to admin_articles_path, notice: 'Article was successfully created.'
         else
           render :new
+        end
+      end
+
+      def favorite_article_workshop
+        if @article.update_attribute(:favorite, 2)
+          redirect_to admin_articles_path, notice: 'article was successfully updated.'
+        end
+      end
+
+      def favorite_article_slider
+        if @article.update_attribute(:favorite, 3)
+          redirect_to admin_articles_path, notice: 'article was successfully updated.'
+        end
+      end
+
+      def delete_favorite_article
+        if @article.update_attribute(:favorite, 0)
+          redirect_to admin_articles_path, notice: 'student was successfully updated.'
+        else
+          render :edit
         end
       end
 

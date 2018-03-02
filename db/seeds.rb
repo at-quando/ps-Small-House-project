@@ -5,6 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Spina::Category.destroy_all
+Spina::SubCategory.destroy_all
+ActiveRecord::Base.connection.execute('TRUNCATE spina_categories')
+ActiveRecord::Base.connection.execute('TRUNCATE spina_sub_categories')
+
 Spina::Category.create(
   id: 1,
   title: "Giới thiệu",
@@ -25,6 +30,12 @@ Spina::Category.create(
   title: "Giảng viên",
   urlTitle: "giang-vien"
 )
+Spina::Category.create(
+  id: 5,
+  title: "Blog",
+  urlTitle: "#"
+)
+#sub categories
 Spina::SubCategory.create(
   id: 1,
   title: "Về Ngôi Nhà Nhỏ",
@@ -54,4 +65,22 @@ Spina::SubCategory.create(
   title: "Các lớp học",
   urlTitle: "lop-hoc",
   category_id: 2
+)
+Spina::SubCategory.create(
+  id: 6,
+  title: "Hoạt động lớp vẽ",
+  urlTitle: "hoat-dong",
+  category_id: 5
+)
+Spina::SubCategory.create(
+  id: 7,
+  title: "Ngôi nhà nhỏ chia sẻ",
+  urlTitle: "chia-se",
+  category_id: 5
+)
+Spina::SubCategory.create(
+  id: 8,
+  title: "Ngoại khoá của chúng tôi",
+  urlTitle: "ngoai-khoa",
+  category_id: 5
 )

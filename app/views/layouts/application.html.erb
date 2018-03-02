@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ShpReborn</title>
+    <title> Lớp vẽ Ngôi Nhà Nhỏ</title>
     <%= csrf_meta_tags %>
-
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo-title.jpg" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
   </head>
   <body>
     <%= render partial: 'shared/navigation', locals: {zone: @nav} %>
+    <!-- <iframe src="https://drive.google.com/embeddedfolderview?id=1BHrFtvGFbKWBLqp_t9Hwp77cmrg04pL7#grid" width="700" height="500" frameborder="0"></iframe> -->
+    <div class="touch-action">
+      <div class="facebook">
+        <a href="https://www.facebook.com/lopvengoinhanho/" target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </div>
+      <div class="instagram">
+        <a href="https://www.facebook.com/lopvengoinhanho/" target="_blank">
+          <i class="fa fa-instagram"></i>
+        </a>
+      </div>
+    </div>
     <%= yield %>
     <% if request.path != '/home'%>
       <%= render 'shared/footer' %>
@@ -29,10 +43,33 @@
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+    (function($) {
+      var fbRoot;
+      function saveFacebookRoot() {
+        if ($('#fb-root').length) {
+          fbRoot = $('#fb-root').detach();
+        }
+      };
+      function restoreFacebookRoot() {
+        if (fbRoot != null) {
+          if ($('#fb-root').length) {
+            $('#fb-root').replaceWith(fbRoot);
+          } else {
+            $('body').append(fbRoot);
+          }
+        }
+        if (typeof FB !== "undefined" && FB !== null) { // Instance of FacebookSDK
+          FB.XFBML.parse();
+        }
+      };
+      document.addEventListener('turbolinks:request-start', saveFacebookRoot)
+      document.addEventListener('turbolinks:load', restoreFacebookRoot)
+    }(jQuery));
     </script>
     <div class="fb-customerchat"
         page_id="111156686071618"
         theme_color="#e68585"
+        ref="messaging_referrals"
         logged_in_greeting="Xin chào, lớp vẽ Ngôi Nhà Nhỏ giúp được gì cho bạn?"
         logged_out_greeting="Xin chào, lớp vẽ Ngôi Nhà Nhỏ giúp được gì cho bạn?"
       >

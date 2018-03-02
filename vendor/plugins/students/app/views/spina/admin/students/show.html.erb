@@ -1,0 +1,27 @@
+<%= link_to '< Quay lại', admin_students_path, class: 'button button-normal', data: {icon: 't'} %>
+<h2>Thông tin cụ thể của học sinh</h2>
+<% if @student %>
+<label>Họ và tên</label><span><%= @student.name %></span><br>
+<label>Ngày sinh</label><span><%= @student.birthday.strftime("%d-%m-%Y") %></span><br>
+<label>Số điện thoại</label><span><%= @student.phone %></span><br>
+<label>Nhà</label><span><%= @student.home %></span><br>
+<label>Cha mẹ</label><span><%= @student.parent %></span><br>
+<label>Sơ lược</label><span><%= @student.description %></span><br>
+<hr>
+<label style="color: red">Nợ học phí?</label><span ><%= @student.dept %></span><br>
+<label>Tham gia vào khoá học nào? - Ngày bắt đầu?</label><span>
+  <% if @student.course %>
+    <%= @student.course.code %>
+  <% else %>
+    Chưa tham gia khoá học nào
+  <% end %>
+</span><br>
+<label>Là học sinh tiêu biểu?</label><span><%= @student.favorite %></span><br>
+<label>Đã dừng học?</label><span>
+  <% if @student.end_date %>
+    <%= @student.end_date %>
+  <% else %>
+    Vẫn còn theo học.
+  <% end %>
+</span><br>
+<% end %>

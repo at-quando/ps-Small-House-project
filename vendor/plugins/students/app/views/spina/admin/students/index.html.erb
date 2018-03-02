@@ -1,5 +1,10 @@
 <div class="filters">
-  <%= link_to 'Tạo học sinh mới', new_admin_student_path, class: 'button button-primary', data: {icon: 't'} %>
+  <%= link_to 'Tạo học sinh mới', new_admin_student_path, class: 'button button-primary', data: {icon: 't'} %><br>
+  <%= form_tag admin_search_student_path, method: :get do %>
+    <label>Ô tìm kiếm: </label>
+    <%= text_field_tag (:search_content), nil, placeholder: "Gõ để tìm kiếm",required: true, class: 'col-md-4'%>
+    <%= submit_tag 'Bắt đầu tìm kiếm', class: 'button button-success' %>
+  <% end %>
 </div>
 <div class="table-container">
   <h2>Danh sách học sinh tiêu biểu</h2>

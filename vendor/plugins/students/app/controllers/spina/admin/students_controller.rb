@@ -2,7 +2,7 @@ module Spina
   module Admin
     class StudentsController < AdminController
 
-      before_action :set_student, only: [:edit, :update, :destroy, :favorite_student, :delete_favorite_student]
+      before_action :set_student, only: [:edit, :show, :update, :destroy, :favorite_student, :delete_favorite_student]
 
       layout 'spina/admin/admin'
 
@@ -16,6 +16,10 @@ module Spina
         @courses = Course.all.try(:map) {|x| [x.name + ' (' +x.code + ')', x.id]}.unshift(['không có', nil])
       end
 
+      def show
+        
+      end
+
       def edit
         @courses = Course.all.try(:map) {|x| [x.name + ' (' +x.code + ')', x.id]}.unshift(['không có', nil])
       end
@@ -27,6 +31,11 @@ module Spina
         else
           render :new
         end
+      end
+
+      def search
+        content = params["search_content"]
+        @students = Student.where("phone LIKE ? OR name LIKE ?" , "%#{content}%", "%#{content}%")
       end
 
       def update

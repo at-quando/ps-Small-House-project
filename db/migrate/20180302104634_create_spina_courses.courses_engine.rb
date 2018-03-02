@@ -1,4 +1,5 @@
 # This migration comes from courses_engine (originally 20180227101212)
+# This migration comes from courses_engine (originally 20180227101212)
 class CreateSpinaCourses < ActiveRecord::Migration[5.1]
   def change
     create_table :spina_courses do |t|

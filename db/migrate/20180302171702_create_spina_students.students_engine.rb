@@ -1,3 +1,4 @@
+# This migration comes from students_engine (originally 20180116085436)
 class CreateSpinaStudents < ActiveRecord::Migration[5.1]
   def change
     create_table :spina_students do |t|
@@ -10,8 +11,8 @@ class CreateSpinaStudents < ActiveRecord::Migration[5.1]
       t.string :parent
       t.datetime :end_date
       t.string :avatar
-      t.boolean :favorite, default: false
-      t.integer :dept, default: 0
+      t.boolean :favorite
+      t.integer :dept
       
       t.timestamps
     end

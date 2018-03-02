@@ -2,7 +2,7 @@ html, body {
   height: 100%;
 } 
 body {
-  font-family: 'Mijas Ultra';
+  font-family: 'Open Sans';
   color: #a9a7a7;
   margin-top: 3rem;
 }
@@ -29,7 +29,6 @@ ul {
 }
 p {
   margin: 0;
-  font-family: 'BreeSerif';
   color: black;
 }
 
@@ -48,4 +47,40 @@ h1,h2,h3,h4,h5,h6 {
 }
 a {
   color: #1bb4b9;
+}
+.touch-action {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(50%);
+  background: rgba(255,255,255,0.7);
+}
+.facebook, .instagram {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  white-space: nowrap;
+}
+.facebook {
+  background-color: #4267b2;
+}
+.instagram {
+  background-color: #cd486b;
+
+}
+.facebook {
+  .fa-facebook {
+    color: white;
+  }
+}
+
+.fa-instagram {
+  color: white;
+}
+
+.nav-item, h1,h2,h3,h4,h5,h6 {
+  font-family: 'Mijas Ultra';
+  color: #00274c;
 }

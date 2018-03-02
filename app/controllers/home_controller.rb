@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @links = [ "background-image: url(https://img.grouponcdn.com/deal/tL4pe27FCbqAiRwyxupM/v9-700x420/v1/c700x420.jpg)",
-              "background-image: url(https://img.grouponcdn.com/deal/3J8Ms9MccVVv4Bxx7TZf/ER-700x420/v1/c700x420.jpg)",
+    @links = [ "background-image: url(https://image.shutterstock.com/z/stock-photo-paint-brushes-and-crafting-supplies-on-the-table-in-a-workshop-760113418.jpg)",
+              "background-image: url(https://orig00.deviantart.net/743c/f/2015/106/8/c/paint_wallpaper_by_amdpastrana-d8pvv5p.jpg)",
               "background-image: url(https://img.vimbly.com/images/full_photos/painting-1.jpg)"
             ]
     @text1 = "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
