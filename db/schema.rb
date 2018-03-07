@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302171702) do
+ActiveRecord::Schema.define(version: 20180328150612) do
 
   create_table "spina_accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180302171702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sub_category_id"
+    t.integer "photo_id"
     t.index ["sub_category_id"], name: "index_spina_articles_on_sub_category_id"
   end
 
