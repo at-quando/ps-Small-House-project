@@ -121,10 +121,10 @@
           </tr>
           <% @courses.each do |course| %>
           <tr>
-            <td><%=course.name %></td>
-            <td><%=course.course_fee %></td>
-            <td><%=course.duration_min %> - <%=course.duration_max %></td>
-            <td><%=course.note %></td>
+            <td><div><%=course.name %></div></td>
+            <td><div><%=course.course_fee %></div></td>
+            <td><div><%=course.duration_min %> - <%=course.duration_max %></div></td>
+            <td><div><%=course.note %></div></td>
           </tr>
           <% end %>
         </table>

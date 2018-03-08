@@ -16,11 +16,17 @@
   }
   table {
     height: auto;
-    th {
+    th, td{
       font-size: 10px;
       letter-spacing: 0;
       width: 100px;
       padding: 1rem 0;
+    }
+    td {
+      div {
+        height: 40px;
+        overflow: scroll;
+      }
     }
   }
   .carousel .carousel-item .picture {
