@@ -1,0 +1,29 @@
+@media only screen and (max-width: 576px){
+  .home-layer {
+    margin: 0;
+    background-size: cover;
+  }
+  .work-list {
+    .work-item {
+      width: calc(100%/3) !important;
+      margin-bottom: 1rem;
+    }
+  }
+  .custom-menu {
+    text-align: center;
+    background-color: white;
+    opacity: 0.7;
+  }
+  table {
+    height: auto;
+    th {
+      font-size: 10px;
+      letter-spacing: 0;
+      width: 100px;
+      padding: 1rem 0;
+    }
+  }
+  .carousel .carousel-item .picture {
+    height: 350px;
+  }
+}
