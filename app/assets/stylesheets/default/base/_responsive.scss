@@ -23,6 +23,7 @@
       padding: 1rem 0;
     }
     td {
+      font-family: 'Helvetica, Arial, sans-serif';
       div {
         height: 40px;
         overflow: scroll;
@@ -31,5 +32,25 @@
   }
   .carousel .carousel-item .picture {
     height: 350px;
+  }
+  .res-mobile {
+    display: none;
+  }
+  .col-footer {
+    padding: 0;
+    text-align: center;
+  }
+  .workshop-houseview {
+    .img-box  {
+      width: 100%; 
+      padding-right: 0;
+      height: auto;
+    }
+    .meta {
+      width: 100%; 
+      h3 {
+        margin-left: 0;
+      }
+    }
   }
 }
