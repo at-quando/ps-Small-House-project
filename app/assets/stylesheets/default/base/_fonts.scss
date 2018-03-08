@@ -3,7 +3,16 @@
   src: url('/fonts/Gibson-Bold.woff');
   font-weight: bold;
 }
-
+@font-face {
+  font-family: 'Gotham Thin';
+  src: url('/fonts/Gotham-Thin.woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Gotham Medium';
+  src: url('/fonts/Gotham-Medium.woff');
+  font-weight: bold;
+}
 @font-face {
   font-family: 'Mijas Ultra';
   src: url('../../fonts/Mijas-Ultra.woff');

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/" => redirect("/home")
   get "/tac-pham" => 'albums#index'
   get "/giang-vien" => 'teachers#index'
-  get '/:name' => 'links#about_house', :as => 'single_article', :constraints => { :name => /(?!.*?admin).*/ }
+  get '/:name' => 'links#about_house', :as => 'single_article', :constraints => { :name => /(?!.*?admin)(?!.*?home)/ }
   mount Spina::Engine => '/'
 end
 
