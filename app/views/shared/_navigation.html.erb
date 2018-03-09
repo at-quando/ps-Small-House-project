@@ -13,13 +13,13 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% e[1].each do |x| %>
-                <%=link_to x.title, x.urlTitle, class: "dropdown-item" %>
+                <%=link_to x.title, single_article_path(x.urlTitle), class: "dropdown-item" %>
               <% end %>
             </div>
           </li>
         <% else %>
           <li class="nav-item active">
-            <%=link_to e[0].title, e[0].urlTitle, class: "nav-link" %>
+            <%=link_to e[0].title, single_article_path(e[0].urlTitle), class: "nav-link" %>
           </li>
         <% end %>
       <% end %>

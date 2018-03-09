@@ -51,20 +51,26 @@
             </div> 
           </div>
         <% end %>
+        <div class="read-more"><%= link_to 'Xem thêm',  tac_pham_path %></div>
       </div>
       <% if @article %>
         <div class="workshop-houseview">
           <div class="img-box">
-              <img src ="<%=@article.cover%>" class="img-article-large">
+              <%= link_to @article.sub_category.urlTitle,:method => :get do %>
+                <img src ="<%=@article.cover%>" class="img-article-large">
+              <% end %>
           </div>
           <div class="meta">
-            <h3><%=@article.title%></h3>
+            <%= link_to @article.sub_category.urlTitle,:method => :get do %>
+              <h3><%=@article.title%></h3>
+            <% end %>
             <% if @article.sub_category %>
               <span><%=@article.sub_category.title%></span>
             <% else %>
               <span><%=@article.category.title%></span>
             <% end %>
             <p><%=@article.description[0..1000]%>...</p>
+            <div class="read-more"><%= link_to 'Xem thêm',  @article.sub_category.urlTitle %></div>
           </div>
         </div>
       <% end %>
@@ -108,16 +114,17 @@
             <% end %>
           </div>
         </div>
+        <div class="col-md-12 read-more"><%= link_to 'Xem thêm',  students_path %></div>
       </div>
       <div class="price-course">
         <h3>Khoá học</h3>
         <table>
           <tr>
-            <th>Khoá học
+            <th>khoá học
             </th>
-            <th>Học phí</th>
-            <th>Thời gian</th>
-            <th>Miêu tả</th>
+            <th>học phí</th>
+            <th>thời gian</th>
+            <th>miêu tả</th>
           </tr>
           <% @courses.each do |course| %>
           <tr>
@@ -133,8 +140,11 @@
         <div class="col-sm-8">
           <% if @article2 %>
             <div class="meta-view">
-              <h3><%= @article2.title%></h3>
+              <%= link_to single_article_id_path(@article2),:method => :get do %>
+                <h3><%= @article2.title%></h3>
+              <% end %>
               <p><%= @article2.description[0..500]%></p>
+              <%=link_to 'Xem thêm', '/workshop' %>
             </div>
           <% end %>
         </div>
@@ -142,8 +152,10 @@
           <div class="house-item-box">
             <% if @images %>
               <% @images.each do |image| %>
-                <div class="house-item" style="background-image:url(<%= image.cover%>)">
-                </div>
+                <%= link_to single_article_id_path(image),:method => :get do %>
+                  <div class="house-item" style="background-image:url(<%= image.cover%>)">
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           </div>

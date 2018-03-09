@@ -47,6 +47,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 a {
   color: #1bb4b9;
+  &:hover {text-decoration: none;}
 }
 .touch-action {
   position: fixed;
@@ -83,4 +84,11 @@ a {
 .nav-item, h1,h2,h3,h4,h5,h6 {
   font-family: 'Mijas Ultra';
   color: #00274c;
+}
+.read-more {
+  text-align: center;
+  a {
+    color: #663096;
+    font-family: 'Mijas Ultra';
+  }
 }

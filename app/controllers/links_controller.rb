@@ -14,6 +14,9 @@ class LinksController < ApplicationController
         @articles = articles
         @list = list
       end
+    elsif params[:id]
+      @article = Spina::Article.find_by(:id => params[:id])
+      @related_articles = Spina::Article.all.limit(5)
     end
   end
 end

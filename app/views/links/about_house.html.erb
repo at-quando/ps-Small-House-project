@@ -48,15 +48,17 @@
         <div class="row">
           <% @articles.each do |art| %>
             <div class="col-md-4 art-item">
-              <div class="item-box">
-                <img src="<%= art.cover %>" class="article-item-img">
-              </div>
-              <h5><%= art.title %></h5>
+              <%= link_to single_article_id_path(art),:method => :get do %>
+                <div class="item-box">
+                  <img src="<%= art.cover %>" class="article-item-img">
+                </div>
+                <h5><%= art.title %></h5>
+              <% end %>
               <% if art.date %>
                 <div><i class="fa fa-calendar"></i><span><%=art.date.strftime("%d-%m-%Y")%></span></div>
               <% end %>
               <p class="desc-main"><%= art.description[0..120] %></p>
-              <%=link_to 'Xem thêm', '' %>
+              <%=link_to 'Xem thêm', single_article_id_path(art) %>
             </div>
           <% end %>
         </div>
