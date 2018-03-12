@@ -1,0 +1,76 @@
+<%= link_to '< Quay lại', admin_money_index_path, class: 'button button-normal', data: {icon: 't'} %>
+<h3>Học sinh vừa nộp tiền</h3>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Lần cuối nộp tiền</th>
+        <th>SĐT</th>
+        <th>Lần thanh toán(3 ngày gần đây)</th>
+        <th>Đang theo học khoá</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @mone.any? %>
+        <% @mone.each_with_index do |mone, index| %>
+          <tr style="background-color: yellow">
+            <td>
+              <%= mone.name %>
+            </td>
+            <td>
+              <% if mone.payment_date %>
+                <%= mone.payment_date.strftime("%d-%m-%Y") %>
+              <% end %>
+            </td>
+            <td>
+              <%= mone.student.phone %>
+            </td>
+            <td>
+              <%= mone.counter %>
+            </td>
+            <td>
+              <%= mone.code_course %>
+            </td>
+          </tr>
+          <tr>
+            <% if @list_mone[index].length > 0 %>
+              <% @list_mone[index].each do |money| %>
+                <tr style="color: blue">
+                  <td>
+                  </td>
+                  <td>
+                    <%= money.student.name %>
+                  </td>
+                  <td>
+                    <%= money.description %>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td class="nowrap align-right">
+                    <%= link_to spina.admin_plus_dept_path(money.student_id, money), :method => :patch, class: 'button button-link' do %>
+                      Tính lại học phí <%= icon('refresh') %>
+                    <% end %>
+                  </td>
+                  <td class="nowrap align-right">
+                    <%= link_to spina.edit_admin_student_path(money.student), class: 'button button-link' do %>
+                      <%= icon('pencil-outline') %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="7">
+            <em>There are no courses</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

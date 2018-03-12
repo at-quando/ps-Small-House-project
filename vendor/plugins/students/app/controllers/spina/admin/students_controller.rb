@@ -13,7 +13,12 @@ module Spina
 
       def new
         @student = Student.new
-        @courses = Course.all.try(:map) {|x| [x.name + ' (' +x.code + ')', x.id]}.unshift(['không có', nil])
+        if request.query_parameters['code']
+          @code = request.query_parameters['code']
+          @id = request.query_parameters['course_id']
+        else
+          @courses = Course.all.try(:map) {|x| [x.name + ' (' +x.code + ')', x.id]}.unshift(['không có', nil])
+        end
       end
 
       def show
@@ -26,8 +31,13 @@ module Spina
 
       def create
         @student = Student.new(student_params)
+        @student.receive_day = @student.start_date
         if @student.save
-          redirect_to admin_students_path, notice: 'student was successfully created.'
+          if @student.course_id
+            redirect_to admin_course_path(@student.course_id), notice: 'student was successfully created.'
+          else
+            redirect_to admin_students_path, notice: 'student was successfully created.'
+          end
         else
           render :new
         end

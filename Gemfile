@@ -12,6 +12,7 @@ gem 'rails', '~> 5.1.4'
 gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+gem 'whenever', require: false
 gem 'bootstrap', '~> 4.0.0.beta3'
 gem "font-awesome-rails"
 # Use SCSS for stylesheets
@@ -32,6 +33,7 @@ gem 'teachers', path: 'vendor/plugins'
 gem 'categories', path: 'vendor/plugins'
 gem 'sub_categories', path: 'vendor/plugins'
 gem 'courses', path: 'vendor/plugins'
+gem 'money', path: 'vendor/plugins'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

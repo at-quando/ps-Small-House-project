@@ -20,6 +20,9 @@
 <div>
   <label>Ghi chú</label><span><%= @course.note %></span>
 </div>
+<div class="filters">
+  <%= link_to 'Tạo học sinh cho khoá học này', "/admin/students/new?code=#{@course.code}&course_id=#{@course.id}", class: 'button button-primary', data: {icon: 't'} %>
+</div>
 <h4>Danh sách học sinh đang tham gia khoá học <%= @course.name %> (<%= @course.code %>)</h4>
 <table class="table">
   <thead>

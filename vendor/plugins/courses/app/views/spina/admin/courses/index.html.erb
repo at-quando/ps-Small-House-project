@@ -44,8 +44,11 @@
               <%= link_to spina.edit_admin_course_path(course), class: 'button button-link' do %>
                 <%= icon('pencil-outline') %>
               <% end %>
-              <%= link_to spina. admin_course_path(course), class: 'button button-link' do %>
+              <%= link_to spina.admin_course_path(course), class: 'button button-link' do %>
                 <%= icon('list-ul') %>
+              <% end %>
+              <%= link_to "/admin/students/new?code=#{course.code}&course_id=#{course.id}", class: 'button button-link' do %>
+                <%= icon('plus') %>
               <% end %>
             </td>
           </tr>
