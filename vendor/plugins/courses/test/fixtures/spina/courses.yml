@@ -4,7 +4,6 @@ one:
   level: 1
   name: MyString
   duration_min: 1.5
-  duration_max: 1.5
   learning_days: 1
   learning_hours: 1.5
   course_fee: 1.5
@@ -14,7 +13,6 @@ two:
   level: 1
   name: MyString
   duration_min: 1.5
-  duration_max: 1.5
   learning_days: 1
   learning_hours: 1.5
   course_fee: 1.5

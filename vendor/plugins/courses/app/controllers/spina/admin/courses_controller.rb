@@ -47,7 +47,7 @@ module Spina
 
       private
       def course_params
-        params.require(:course).permit(:level, :code, :name, :duration_min, :duration_max, :learning_days, :learning_hours, :course_fee, :note)
+        params.require(:course).permit(:level, :code, :name, :duration_min, :learning_days, :learning_hours, :course_fee, :note)
       end
 
       def set_course
