@@ -1,5 +1,5 @@
 current directory: /Users/quando/shp-reborn/vendor/cache/ruby/2.4.0/gems/nokogiri-1.8.2/ext/nokogiri
-/Users/quando/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20180309-21691-ay2j6a.rb extconf.rb
+/Users/quando/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20180312-19918-n7yc08.rb extconf.rb
 checking if the C compiler accepts ... yes
 checking if the C compiler accepts -Wno-error=unused-command-line-argument-hard-error-in-future... no
 Building nokogiri using packaged libraries.
@@ -167,4 +167,4 @@ rm -rf /Users/quando/shp-reborn/vendor/cache/ruby/2.4.0/gems/nokogiri-1.8.2/port
 
 current directory: /Users/quando/shp-reborn/vendor/cache/ruby/2.4.0/gems/nokogiri-1.8.2/ext/nokogiri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20180309-21691-1skipgy/nokogiri
+/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20180312-19918-1h1g0i1/nokogiri
