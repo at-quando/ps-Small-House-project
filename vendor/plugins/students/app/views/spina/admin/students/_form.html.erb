@@ -1,4 +1,4 @@
-<h3>Tạo học sinh</h3>
+<h3>Tạo học sinh ghi danh vào khoá <%=@code %></h3>
 <%= form_for [:admin, @student], html: {autocomplete: "off"} do |f| %>
   <div id="page_content">
     <div class="table-container">
@@ -53,29 +53,40 @@
         </tr>
         <tr>
           <td>
-            Ngày bắt đầu học (Ngày - Tháng - Năm)
-          </td>
-          <td>
-            <%= f.text_field :start_date, value: (@student.start_date.strftime("%d-%m-%Y") unless @student.new_record?), class: 'datepicker' %>
-          </td>
-        </tr>
-        <tr>
-          <td>
             Ảnh đại diện
           </td>
           <td>
             <%= f.file_field :avatar %>
           </td>
         </tr>
+        <tr style="color:red">
+          <td>********</td>
+          <td>
+            Nếu bạn đổi khoá học của học sinh, hãy lưu ý chỉnh lại "Ngày bắt đầu học" phù hợp để hệ thống dễ dàng tính học phí.
+          </td>
+        </tr>
         <tr>
           <td>
             Ghi danh vào khoá
           </td>
+          <% if @code != nil %>
+            <td>
+              <%= f.hidden_field :course_id, :value => @id %> mã số <%= @code %>
+            </td>
+          <% end %>
           <% if @courses != nil %>
             <td>
               <%= f.select :course_id, options_for_select(@courses, :selected => @student.course_id) %>
             </td>
           <% end %>
+        </tr>
+        <tr>
+          <td>
+            Ngày bắt đầu học (Ngày - Tháng - Năm)
+          </td>
+          <td>
+            <%= f.text_field :start_date, value: (@student.start_date.strftime("%d-%m-%Y") unless @student.new_record?), class: 'datepicker' %>
+          </td>
         </tr>
       </table>
     </div>

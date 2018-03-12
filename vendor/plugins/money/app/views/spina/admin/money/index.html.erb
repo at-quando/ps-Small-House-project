@@ -1,0 +1,198 @@
+<div class="filters">
+  <%= link_to 'Xem danh sách học sinh vừa nộp tiền', admin_index_fee_path, class: 'button button-primary', data: {icon: 't'} %>
+  <%= link_to 'Xem danh sách học sinh bị tính lại học phí', admin_index_back_fee_path, class: 'button button-success', data: {icon: 't'} %>
+</div>
+<!-- Nộp trễ -->
+<h3>Học sinh nộp tiền trễ</h3>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Ngày bắt đầu học</th>
+        <th>Lần cuối nộp tiền</th>
+        <th>SĐT</th>
+        <th>Nợ</th>
+        <th>Đang theo học khoá</th>
+        <th>Học phí (VND)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @late_students.any? %>
+        <% @late_students.each do |student| %>
+          <tr>
+            <td>
+              <%= student.name %>
+            </td>
+            <td>
+              <% if student.start_date %>
+                <%= student.start_date.strftime("%d-%m-%Y")%>
+              <% end %>
+            </td>
+            <td>
+              <% if student.receive_day %>
+                <%= student.receive_day.strftime("%d-%m-%Y") %>
+              <% end %>
+            </td>
+            <td>
+              <%= student.phone %>
+            </td>
+            <td>
+              <%= student.dept %>
+            </td>
+            <% if student.course %>
+              <td>
+                <%= student.course.code %>
+              </td>
+              <td>
+                <%= student.course.course_fee %>
+              </td>
+            <% end %>
+            <td>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.admin_minus_dept_path(student), :method => :patch, class: 'button button-link' do %>
+                Thanh toán<%= icon('check') %>
+              <% end %>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.edit_admin_student_path(student), class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="7">
+            <em>There are no courses</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Sắp nộp -->
+<h3>Học sinh sắp đến hạn nộp tiền</h3>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Ngày bắt đầu học</th>
+        <th>SĐT</th>
+        <th>Nợ</th>
+        <th>Đang theo học khoá</th>
+        <th>Học phí (VND)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @soon_students.any? %>
+        <% @soon_students.each do |student| %>
+          <tr>
+            <td>
+              <%= student.name %>
+            </td>
+            <td>
+              <%= student.start_date %>
+            </td>
+            <td>
+              <%= student.phone %>
+            </td>
+            <td>
+              <%= student.dept %>
+            </td>
+            <% if student.course %>
+              <td>
+                <%= student.course.code %>
+              </td>
+              <td>
+                <%= student.course.course_fee %>
+              </td>
+            <% end %>
+            <td>
+            </td>
+            <td class="nowrap align-right">
+              <td class="nowrap align-right">
+                <%= link_to spina.admin_minus_dept_path(student), :method => :patch, class: 'button button-link' do %>
+                  Thanh toán<%= icon('check') %>
+                <% end %>
+              </td>
+              <td class="nowrap align-right">
+                <%= link_to spina.edit_admin_student_path(student), class: 'button button-link' do %>
+                  <%= icon('pencil-outline') %>
+                <% end %>
+              </td>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="7">
+            <em>There are no courses</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Học sinh nộp sớm -->
+<h3>Học sinh nộp trước tiền học</h3>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Ngày bắt đầu học</th>
+        <th>SĐT</th>
+        <th>Nộp trước</th>
+        <th>Đang theo học khoá</th>
+        <th>Học phí (VND)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @over_students.any? %>
+        <% @over_students.each do |student| %>
+          <tr>
+            <td>
+              <%= student.name %>
+            </td>
+            <td>
+              <%= student.start_date %>
+            </td>
+            <td>
+              <%= student.phone %>
+            </td>
+            <td>
+              <%= student.dept %>
+            </td>
+            <% if student.course %>
+              <td>
+                <%= student.course.code %>
+              </td>
+              <td>
+                <%= student.course.course_fee %>
+              </td>
+            <% end %>
+            <td>
+            </td>
+            <td class="nowrap align-right">
+              <%= link_to spina.admin_money_index_path, class: 'button button-link' do %>
+                <%= icon('pencil-outline') %>
+              <% end %>
+              <%= link_to spina.admin_money_index_path, class: 'button button-link' do %>
+                <%= icon('list-ul') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class="align-center" colspan="7">
+            <em>There are no courses</em>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

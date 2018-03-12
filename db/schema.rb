@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328150612) do
+ActiveRecord::Schema.define(version: 20180328150617) do
 
   create_table "spina_accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20180328150612) do
     t.integer "level"
     t.string "code"
     t.string "name"
-    t.float "duration_min", limit: 24
+    t.string "duration_min"
     t.float "duration_max", limit: 24
     t.integer "learning_days"
     t.float "learning_hours", limit: 24
@@ -114,6 +114,18 @@ ActiveRecord::Schema.define(version: 20180328150612) do
   create_table "spina_lines", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "spina_mones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "title"
+    t.text "description"
+    t.datetime "payment_date"
+    t.datetime "receive_day"
+    t.bigint "student_id"
+    t.string "code_course"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_spina_mones_on_student_id"
   end
 
   create_table "spina_navigation_items", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -255,6 +267,7 @@ ActiveRecord::Schema.define(version: 20180328150612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_id"
+    t.datetime "receive_day"
     t.index ["course_id"], name: "index_spina_students_on_course_id"
   end
 
