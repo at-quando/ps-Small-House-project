@@ -7,7 +7,7 @@ module Spina
       layout 'spina/admin/admin'
 
       def index
-        @courses = Course.all
+        @courses = Course.all.order(:code)
       end
 
       def new
