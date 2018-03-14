@@ -80,7 +80,7 @@ module Spina
 
       private
       def student_params
-        params.require(:student).permit(:name, :course_id, :description, :start_date, :birthday, :phone, :home, :parent, :end_date, :avatar)
+        params.require(:student).permit(:name, :course_id, :description, :start_date, :dept, :phone, :home, :parent, :end_date, :avatar)
       end
 
       def set_student

@@ -33,6 +33,8 @@ module Spina
         if @note.update(note_params)
           redirect_to admin_notes_path, notice: 'note was successfully updated.'
         else
+          @teachers = Teacher.all.map{|x| [x.name, x.id]}.unshift(['không có', nil])
+          @students = Student.all.map{|x| [x.name, x.id]}.unshift(['không có', nil])
           render :edit
         end
       end

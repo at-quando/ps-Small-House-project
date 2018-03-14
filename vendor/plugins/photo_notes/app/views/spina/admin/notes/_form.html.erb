@@ -4,7 +4,7 @@
       <table class="table table-form">
         <tr>
           <td>
-            Title
+            Tiêu đề
           </td>
           <td>
             <%= f.text_field :title %>
@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td>
-            Description
+            Mô tả
           </td>
           <td>
             <%= f.text_field :description %>
@@ -20,15 +20,16 @@
         </tr>
         <tr>
           <td>
-            Age
+            Lớp
           </td>
+          <% cla = [1,2,3,4,5,6,7,8,9,10,11,12].unshift('mẫu giáo bé', 'mẫu giáo lớn')%>
           <td>
-            <%= f.select :age, (1..80) %>
+            <%= f.select :age, cla %>
           </td>
         </tr>
         <tr>
           <td>
-            Student
+            Học sinh
           </td>
           <td>
             <%= f.select :student_id, options_for_select(@students, :selected => @note.student_id) %>
@@ -36,7 +37,7 @@
         </tr>
         <tr>
           <td>
-            Teacher
+            Giáo viên hỗ trợ
           </td>
           <td>
             <%= f.select :teacher_id, options_for_select(@teachers, :selected => @note.teacher_id)  %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328150617) do
+ActiveRecord::Schema.define(version: 20180328150618) do
 
   create_table "spina_accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 20180328150617) do
     t.bigint "teacher_id"
     t.string "description"
     t.string "title"
-    t.integer "age"
+    t.string "age"
     t.boolean "favorite"
     t.index ["student_id"], name: "index_spina_photos_on_student_id"
     t.index ["teacher_id"], name: "index_spina_photos_on_teacher_id"
@@ -255,7 +255,6 @@ ActiveRecord::Schema.define(version: 20180328150617) do
   create_table "spina_students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "start_date"
-    t.datetime "birthday"
     t.string "phone"
     t.text "description"
     t.string "home"
