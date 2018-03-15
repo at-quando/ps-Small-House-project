@@ -13,11 +13,22 @@ module Spina
 
       def new
         @note = Photo.new
+        url    = 'http://www.foo.com?id=4&empid=6'
+        uri    = URI.parse(url)
+        params = CGI.parse(uri.query)
+        id     = params['id'].first
       end
 
       def edit
         @teachers = Teacher.all.map{|x| [x.name, x.id]}.unshift(['không có', nil])
-        @students = Student.all.map{|x| [x.name, x.id]}.unshift(['không có', nil])
+        uri   = URI.parse(request.fullpath)
+        if uri.query
+          params = CGI.parse(uri.query)
+          content   = params['search_content'].first
+          @students = Student.where("phone LIKE ? OR name LIKE ?" , "%#{content}%", "%#{content}%").map{|x| [x.name, x.id]}.unshift(['không có', nil])
+        else
+          @students = Student.all.map{|x| [x.name, x.id]}.unshift(['không có', nil])
+        end
       end
 
       def create

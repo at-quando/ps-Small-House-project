@@ -1,6 +1,6 @@
 class Spina::Student < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
-  has_many :photos
+  has_many :photos, dependent: :nullify
   belongs_to :course, optional: true
 
   def name
