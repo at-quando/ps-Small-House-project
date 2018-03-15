@@ -7,7 +7,6 @@
         <tr>
           <th></th>
           <th>Name</th>
-          <th>Birthday</th>
           <th>Phone</th>
           <th>Specialize</th>
           <th>Salary</th>
@@ -25,11 +24,6 @@
               </td>
               <td>
                 <%= teacher.name %>
-              </td>
-              <td>
-                <% if teacher.birthday %>
-                  <%= teacher.birthday.strftime("%d-%m-%Y") %>
-                <% end %>
               </td>
               <td>
                 <%= teacher.phone %>

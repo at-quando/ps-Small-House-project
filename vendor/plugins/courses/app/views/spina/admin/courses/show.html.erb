@@ -29,7 +29,6 @@
     <tr>
       <th></th>
       <th>Name</th>
-      <th>Birthday</th>
       <th>Phone</th>
       <th>Home</th>
       <th>Parent</th>
@@ -47,11 +46,6 @@
           </td>
           <td>
             <%= student.name %>
-          </td>
-          <td>
-            <% if student.birthday %>
-              <%= student.birthday.strftime("%d-%m-%Y") %>
-            <% end %>
           </td>
           <td>
             <%= student.phone %>

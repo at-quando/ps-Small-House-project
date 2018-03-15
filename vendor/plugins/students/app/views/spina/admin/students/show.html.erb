@@ -2,7 +2,6 @@
 <h2>Thông tin cụ thể của học sinh</h2>
 <% if @student %>
 <label>Họ và tên</label><span><%= @student.name %></span><br>
-<label>Ngày sinh</label><span><%= @student.birthday.strftime("%d-%m-%Y") %></span><br>
 <label>Số điện thoại</label><span><%= @student.phone %></span><br>
 <label>Nhà</label><span><%= @student.home %></span><br>
 <label>Cha mẹ</label><span><%= @student.parent %></span><br>

@@ -87,7 +87,6 @@
                     </div>
                     <div class="student-meta">
                       <span class="name"><%= student.name %> </span>
-                      <span class="age"> (<%= student.birthday.year %>)</span>
                       <i class="fa fa-arrow-right" aria-hidden="true"></i>
                       <p class="student-desc"><%= student.description[0..60] %></p>
                     </div>
@@ -106,7 +105,6 @@
                 </div>
                 <div class="student-meta">
                   <span class="name"><%= @student_best.name%></span>
-                  <span class="age"><%= @student_best.birthday.year %></span>
                   <i class="fa fa-arrow-right" aria-hidden="true"></i>
                   <p class="student-desc"><%= @student_best.description[0..60] %></p>
                 </div>

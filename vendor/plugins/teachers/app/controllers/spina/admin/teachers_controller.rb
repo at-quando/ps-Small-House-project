@@ -43,7 +43,7 @@ module Spina
 
       private
       def teacher_params
-        params.require(:teacher).permit(:avatar, :teaching_technic, :specialize, :salary, :phone, :birthday, :name, :info, :start_date, :end_date)
+        params.require(:teacher).permit(:avatar, :teaching_technic, :specialize, :salary, :phone, :name, :info, :start_date, :end_date)
       end
 
       def set_teacher
