@@ -80,6 +80,10 @@
             <td>
               <%= f.text_field :start_date, value: (@student.start_date.strftime("%d-%m-%Y") unless @student.new_record?), class: 'datepicker' %>
             </td>
+          <% else %>
+            <td>
+              <%= f.text_field :start_date, value: (@student.start_date unless @student.new_record?), class: 'datepicker' %>
+            </td>
           <% end %>
         </tr>
         <tr>
