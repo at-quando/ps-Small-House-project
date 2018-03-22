@@ -76,9 +76,11 @@
           <td>
             Ngày bắt đầu học (Ngày - Tháng - Năm)
           </td>
-          <td>
-            <%= f.text_field :start_date, value: (@student.start_date.strftime("%d-%m-%Y") unless @student.new_record?), class: 'datepicker' %>
-          </td>
+          <% if @student.start_date %>
+            <td>
+              <%= f.text_field :start_date, value: (@student.start_date.strftime("%d-%m-%Y") unless @student.new_record?), class: 'datepicker' %>
+            </td>
+          <% end %>
         </tr>
         <tr>
           <td>

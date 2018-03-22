@@ -13,10 +13,10 @@ module Spina
 
       def new
         @note = Photo.new
-        url    = 'http://www.foo.com?id=4&empid=6'
-        uri    = URI.parse(url)
-        params = CGI.parse(uri.query)
-        id     = params['id'].first
+        # url    = 'http://www.foo.com?id=4&empid=6'
+        # uri    = URI.parse(url)
+        # params = CGI.parse(uri.query)
+        # id     = params['id'].first
       end
 
       def edit
