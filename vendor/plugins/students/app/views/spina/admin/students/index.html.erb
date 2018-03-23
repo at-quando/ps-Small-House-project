@@ -23,9 +23,10 @@
     </thead>
     <tbody>
       <% if @favor_students.any? %>
-        <% @favor_students.each do |student| %>
+        <% @favor_students.each_with_index do |student, index| %>
           <tr>
             <td>
+              <%= index + 1 %>
               <img class="avatar" src="<%= student.avatar %>">
             </td>
             <td>
@@ -88,9 +89,10 @@
     </thead>
     <tbody>
       <% if @students.any? %>
-        <% @students.each do |student| %>
+        <% @students.each_with_index do |student, index| %>
           <tr>
             <td>
+              <%= index + 1 %>
               <img class="avatar" src="<%= student.avatar %>">
             </td>
             <td>

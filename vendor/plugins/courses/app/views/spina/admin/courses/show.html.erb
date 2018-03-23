@@ -39,9 +39,10 @@
   </thead>
   <tbody>
     <% if @students.any? %>
-      <% @students.each do |student| %>
+      <% @students.each_with_index do |student, index| %>
         <tr>
           <td>
+            <%= index + 1 %>
             <img class="avatar" src="<%= student.avatar %>">
           </td>
           <td>

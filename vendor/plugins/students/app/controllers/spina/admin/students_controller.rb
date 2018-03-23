@@ -49,6 +49,7 @@ module Spina
       end
 
       def update
+        @student.receive_day = student_params["start_date"]
         if @student.update(student_params)
           redirect_to admin_students_path, notice: 'student was successfully updated.'
         else

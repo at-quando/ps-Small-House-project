@@ -12,8 +12,10 @@ module Spina
         check_students = Student.where("dept = ?", 0)
         @soon_students = []
         check_students.each do |check|
-          if check.receive_day + 1.month - Time.now < 604800
-            @soon_students.push(check)
+          if check.receive_day
+            if check.receive_day + 1.month - Time.now < 604800
+              @soon_students.push(check)
+            end
           end
         end 
         @over_students = Student.where("dept < ?", 0)
