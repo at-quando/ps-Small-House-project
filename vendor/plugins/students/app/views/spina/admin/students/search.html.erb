@@ -50,8 +50,11 @@
               <% end %>
             </td>
             <td class="nowrap align-right">
-              <%= link_to spina.admin_student_path(student), class: 'button button-link' do %>
+              <%= link_to spina.edit_admin_student_path(student), class: 'button button-link' do %>
                 <%= icon('pencil-outline') %>
+              <% end %>
+              <%= link_to spina.admin_student_path(student), class: 'button button-link' do %>
+                <%= icon('check') %>
               <% end %>
             </td>
           </tr>
