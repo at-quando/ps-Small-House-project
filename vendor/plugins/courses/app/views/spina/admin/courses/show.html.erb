@@ -24,6 +24,7 @@
   <%= link_to 'Tạo học sinh cho khoá học này', "/admin/students/new?code=#{@course.code}&course_id=#{@course.id}", class: 'button button-primary', data: {icon: 't'} %>
 </div>
 <h4>Danh sách học sinh đang tham gia khoá học <%= @course.name %> (<%= @course.code %>)</h4>
+<p>Lưu ý học sinh nợ học phí sẽ có màu vàng, nếu trường "Nợ học phí" là số dương thì học sinh đó đang nợ học phí với số tháng tương ứng, số âm thì có nghĩa là học sinh đó đã nộp tiền trước tháng.</p>
 <table class="table">
   <thead>
     <tr>
@@ -34,13 +35,18 @@
       <th>Parent</th>
       <th>Start Day</th>
       <th>End Day</th>
+      <th>Nợ học phí</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% if @students.any? %>
       <% @students.each_with_index do |student, index| %>
-        <tr>
+        <% if student.dept <= 0 %>
+          <tr>
+        <% else %>
+          <tr style="background-color: yellow">
+        <% end %>
           <td>
             <%= index + 1 %>
             <img class="avatar" src="<%= student.avatar %>">
@@ -67,6 +73,7 @@
               <%= student.end_date.strftime("%d-%m-%Y") %>
             <% end %>
           </td>
+          <td><%= student.dept %></td>
           <td class="nowrap align-right">
             <%= link_to spina.edit_admin_student_path(student), class: 'button button-link' do %>
               <%= icon('pencil-outline') %>

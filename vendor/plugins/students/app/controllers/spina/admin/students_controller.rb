@@ -32,6 +32,7 @@ module Spina
       def create
         @student = Student.new(student_params)
         @student.receive_day = @student.start_date
+        @student.dept = params[:student][:dept].to_i + 1
         if @student.save
           if @student.course_id
             redirect_to admin_course_path(@student.course_id), notice: 'student was successfully created.'
@@ -50,6 +51,7 @@ module Spina
 
       def update
         @student.receive_day = student_params["start_date"]
+        @student.dept = @student.dept + params[:student][:dept].to_i
         if @student.update(student_params)
           redirect_to admin_students_path, notice: 'student was successfully updated.'
         else
@@ -81,7 +83,7 @@ module Spina
 
       private
       def student_params
-        params.require(:student).permit(:name, :course_id, :description, :start_date, :dept, :phone, :home, :parent, :end_date, :avatar)
+        params.require(:student).permit(:name, :course_id, :description, :start_date, :phone, :home, :parent, :end_date, :avatar)
       end
 
       def set_student
