@@ -4,19 +4,12 @@
     <div class="album-box">
       <img src="<%= work.file.to_s %>" class="album-item">
       <div class="album-meta">
-        <p class="title">Title</p>
-        <p>12/12/2017</p>
-        <p>by Do Quan</p>
-      </div>
-    </div>
-  <% end %>
-  <% @works.each do |work| %>
-    <div class="album-box">
-      <img src="<%= work.file.to_s %>" class="album-item">
-      <div class="album-meta">
-        <p class="title">Title</p>
-        <p>12/12/2017</p>
-        <p>by Do Quan</p>
+        <p class="title"><%= work.title%></p>
+        <% if work.student %>
+          <span class="author"><%= work.student.name %> ( lớp <%= work.age %> )</span>
+        <% else %>
+          <span class="author">vô danh</span>
+        <% end %>
       </div>
     </div>
   <% end %>
