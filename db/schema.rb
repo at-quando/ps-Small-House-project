@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328150618) do
+ActiveRecord::Schema.define(version: 20180809101843) do
 
   create_table "spina_accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(version: 20180328150618) do
     t.datetime "updated_at", null: false
     t.bigint "course_id"
     t.datetime "receive_day"
+    t.text "review"
     t.index ["course_id"], name: "index_spina_students_on_course_id"
   end
 
