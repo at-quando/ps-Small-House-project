@@ -114,26 +114,6 @@
         </div>
         <div class="col-md-12 read-more"><%= link_to 'Xem thêm',  students_path %></div>
       </div>
-      <div class="price-course">
-        <h3>Khoá học</h3>
-        <table>
-          <tr>
-            <th>khoá học
-            </th>
-            <th>học phí</th>
-            <th>thời gian</th>
-            <th>miêu tả</th>
-          </tr>
-          <% @courses.each do |course| %>
-          <tr>
-            <td><div><%=course.name %></div></td>
-            <td><div><%=course.course_fee %></div></td>
-            <td><div><%=course.duration_min %></div></td>
-            <td><div><%=course.note %></div></td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
       <div class="house-view row">
         <div class="col-sm-8">
           <% if @article2 %>
