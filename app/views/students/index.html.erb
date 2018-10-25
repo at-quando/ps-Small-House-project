@@ -3,11 +3,13 @@
   <div class="row">
     <% @students.each do |work| %>
       <div class="col-md-3 person">
-        <div class="person-img-box">
-          <img src="<%= work.avatar.to_s %>" class="person-img">
-        </div>
-        <p class="name"><%=work.name%></p>
-        <p class="desc-main"><%=work.description[0..120]%></p>
+        <%= link_to student_path(work),:method => :get do %>
+          <div class="person-img-box">
+            <img src="<%= work.avatar.to_s %>" class="person-img">
+          </div>
+          <p class="name"><%=work.name%></p>
+          <p class="desc-main"><%=work.description[0..120]%></p>
+        <% end %>
       </div>
     <% end %>
   </div>
