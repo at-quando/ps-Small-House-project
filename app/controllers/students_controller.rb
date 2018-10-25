@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   before_action :set_student, only: [:show]
 
   def index
-    @students = Spina::Student.all
+    @students = Spina::Student.where(favorite: true)
   end
 
   def show
